@@ -2,10 +2,18 @@
    Algorithm:
    START
       Accept a number from the user
-      If number is negative, convert it to positive
-      Loop from 1 to that number
-         Print each number
-      End Loop
+      Use switch-case to check the number:
+         If 0 -> Print "Zero"
+         If 1 -> Print "One"
+         If 2 -> Print "Two"
+         If 3 -> Print "Three"
+         If 4 -> Print "Four"
+         If 5 -> Print "Five"
+         If 6 -> Print "Six"
+         If 7 -> Print "Seven"
+         If 8 -> Print "Eight"
+         If 9 -> Print "Nine"
+         Else -> Print "Invalid Input"
    STOP
 */
 
@@ -19,27 +27,29 @@
 ///////////////////////////////////////////////////////////////////
 //
 //  Function Name : Display
-//  Description   : Prints numbers from 1 to given number
+//  Description   : Displays the word form of a single-digit number
 //  Input         : Integer (iNo)
-//  Output        : Displays numbers on screen
+//  Output        : Word representation printed on screen
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 27/10/2025
+//  Date          : 29/10/2025
 //
 ///////////////////////////////////////////////////////////////////
 void Display(int iNo)
 {
-    int iCnt = 0;
-
-    // Convert negative number to positive
-    if(iNo < 0)
+    // Switch-case used to print number in words
+    switch(iNo)
     {
-        iNo = -iNo;
-    }
-
-    // Loop to print numbers from 1 to iNo
-    for(iCnt = 1; iCnt <= iNo; iCnt++)
-    {
-        printf("%d\t", iCnt);
+        case 0: printf("Zero"); break;
+        case 1: printf("One"); break;
+        case 2: printf("Two"); break;
+        case 3: printf("Three"); break;
+        case 4: printf("Four"); break;
+        case 5: printf("Five"); break;
+        case 6: printf("Six"); break;
+        case 7: printf("Seven"); break;
+        case 8: printf("Eight"); break;
+        case 9: printf("Nine"); break;
+        default: printf("Invalid Input");
     }
 }
 
@@ -64,7 +74,13 @@ int main()
 //
 //  Example Output:
 //
-//  Input  : 5
-//  Output : 1    2    3    4    5
+//  Input  : 4
+//  Output : Four
+//
+//  Input  : 9
+//  Output : Nine
+//
+//  Input  : 12
+//  Output : Invalid Input
 //
 ///////////////////////////////////////////////////////////////////

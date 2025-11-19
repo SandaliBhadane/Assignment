@@ -1,10 +1,13 @@
 /*
    Algorithm:
    START
-      Accept a number from user
-      Loop from 1 to that number
-         Print pattern *$
-      End Loop
+      Accept a number from the user
+      If number < 50
+         Display "Small"
+      Else if number >= 50 and < 100
+         Display "Medium"
+      Else if number >= 100
+         Display "Large"
    STOP
 */
 
@@ -17,22 +20,28 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Pattern
-//  Description   : Prints pattern of *$ for given number of times
-//  Input         : Integer 
-//  Output        : Displays pattern
+//  Function Name : Number
+//  Description   : Classifies the given number as Small, Medium, or Large
+//  Input         : Integer
+//  Output        : Text displayed on screen ("Small", "Medium", or "Large")
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 27/10/2025
+//  Date          : 29/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void Pattern(int iNo)
+void Number(int iNo)
 {
-    int iCnt = 0;
-
-    // Loop to print pattern *$ iNo times
-    for(iCnt = 1; iCnt <= iNo; iCnt++)
+    // Check the range of the number and display category
+    if(iNo < 50)
     {
-        printf("*$\t");
+        printf("Small");
+    }
+    else if(iNo >= 50 && iNo < 100)
+    {
+        printf("Medium");
+    }
+    else if(iNo >= 100)
+    {
+        printf("Large");
     }
 }
 
@@ -45,10 +54,10 @@ int main()
 {
     int iValue = 0;
 
-    printf("Enter number: ");
+    printf("Enter number:\t");
     scanf("%d", &iValue);
 
-    Pattern(iValue);
+    Number(iValue);
 
     return 0;
 }
@@ -57,7 +66,13 @@ int main()
 //
 //  Example Output:
 //
-//  Input  : 4
-//  Output : *$	*$	*$	*$
+//  Input  : 30
+//  Output : Small
+//
+//  Input  : 75
+//  Output : Medium
+//
+//  Input  : 120
+//  Output : Large
 //
 ///////////////////////////////////////////////////////////////////

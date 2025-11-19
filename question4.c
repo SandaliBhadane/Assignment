@@ -1,34 +1,24 @@
-/*
-   Algorithm:
-   START
-      Accept a number from the user
-      If number is negative, convert it to positive
-      Loop from 1 to iNo
-         If current number is odd
-            Display the number
-         End If
-      End Loop
-   STOP
-*/
+///////////////////////////////////////////////////////////////////
+//
+//  Description  : Accepts a number from user and displays its table
+//  Input        : Integer (iNo)
+//  Output       : Multiplication table of the number
+//  Author       : Sandali Sunil Bhadane
+//  Date         : 29/10/2025
+//
+///////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////
-//
-//  Required Header File
-//
-///////////////////////////////////////////////////////////////////
 #include<stdio.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : OddDisplay
-//  Description   : Displays all odd numbers up to the given number
-//  Input         : Integer (iNo)
-//  Output        : Sequence of odd numbers printed on screen
-//  Author        : Sandali Sunil Bhadane
-//  Date          : 27/10/2025
+//  Function Name : Table
+//  Description   : Displays multiplication table of the given number
+//  Input         : Integer
+//  Output        : Prints table on console
 //
 ///////////////////////////////////////////////////////////////////
-void OddDisplay(int iNo)
+void Table(int iNo)
 {
     int iCnt = 0;
 
@@ -38,13 +28,10 @@ void OddDisplay(int iNo)
         iNo = -iNo;
     }
 
-    // Print all odd numbers up to iNo
-    for(iCnt = 1; iCnt <= iNo; iCnt++)
+    // Loop to display multiplication table
+    for(iCnt = 1; iCnt <= 10; iCnt++)
     {
-        if((iCnt % 2) != 0)
-        { 
-            printf("%d\t", iCnt);
-        }
+        printf("%d\t", iNo * iCnt);
     }
 }
 
@@ -57,10 +44,10 @@ int main()
 {
     int iValue = 0;
 
-    printf("Enter Number :\t");
+    printf("Enter Number:\t");
     scanf("%d", &iValue);
 
-    OddDisplay(iValue);
+    Table(iValue);
 
     return 0;
 }
@@ -69,7 +56,7 @@ int main()
 //
 //  Example Output:
 //
-//  Input  : 10
-//  Output : 1   3   5   7   9
+//  Input  : 5
+//  Output : 5   10   15   20   25   30   35   40   45   50
 //
 ///////////////////////////////////////////////////////////////////

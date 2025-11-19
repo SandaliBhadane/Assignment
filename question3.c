@@ -1,46 +1,41 @@
-/*
-   Algorithm:
-   START
-      Accept a number from the user
-      If number is negative, convert it to positive
-      Loop from -iNo to +iNo
-         Print each number
-      End Loop
-   STOP
-*/
+///////////////////////////////////////////////////////////////////
+//
+//  Description  : Accepts a number from user and returns its factorial
+//  Input        : Integer (iNo)
+//  Output       : Integer (Factorial value)
+//  Author       : Sandali Sunil Bhadane
+//  Date         : 29/10/2025
+//
+///////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////
-//
-//  Required Header File
-//
-///////////////////////////////////////////////////////////////////
 #include<stdio.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Display
-//  Description   : Displays numbers from -iNo to +iNo
-//  Input         : Integer
-//  Output        : Sequence of numbers printed on screen
-//  Author        : Sandali Sunil Bhadane
-//  Date          : 27/10/2025
+//  Function Name : Factorial
+//  Description   : Calculates factorial of a given number
+//  Input         : Integer 
+//  Output        : Integer
 //
 ///////////////////////////////////////////////////////////////////
-void Display(int iNo)
+int Factorial(int iNo)
 {
+    int iFact = 1;
     int iCnt = 0;
 
-    // Convert negative number to positive
+    // If number is negative, convert to positive
     if(iNo < 0)
     {
         iNo = -iNo;
     }
 
-    // Print numbers from -iNo to +iNo
-    for(iCnt = -iNo; iCnt <= iNo; iCnt++)
+    // Loop to calculate factorial
+    for(iCnt = 1; iCnt <= iNo; iCnt++)
     {
-        printf("%d\t", iCnt);
+        iFact = iFact * iCnt;
     }
+
+    return iFact;
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -50,12 +45,14 @@ void Display(int iNo)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;
+    int iValue = 0, iRet = 0;
 
-    printf("Enter Number :\t");
+    printf("Enter number:\t");
     scanf("%d", &iValue);
 
-    Display(iValue);
+    iRet = Factorial(iValue);
+
+    printf("Factorial of number is: %d", iRet);
 
     return 0;
 }
@@ -65,6 +62,9 @@ int main()
 //  Example Output:
 //
 //  Input  : 5
-//  Output : -5  -4  -3  -2  -1  0  1  2  3  4  5
+//  Output : Factorial of number is: 120
+//
+//  Input  : -4
+//  Output : Factorial of number is: 24
 //
 ///////////////////////////////////////////////////////////////////

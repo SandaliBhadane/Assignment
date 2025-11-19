@@ -1,12 +1,10 @@
-/*
+/* 
    Algorithm:
    START
       Accept a number from the user
-      If number is negative, convert it to positive
-      Loop from 1 to 5
-         Multiply the number by the loop counter
-         Display the result
-      End Loop
+      If the number is negative, convert it to positive
+      Display the multiplication table of the number
+      Table should be printed from 10 down to 1
    STOP
 */
 
@@ -19,28 +17,32 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : MultipleDisplay
-//  Description   : Displays first 5 multiples of a given number
-//  Input         : Integer (iNo)
-//  Output        : Sequence of multiples printed on screen
+//  Function Name : DisplayTable
+//  Description   : Displays reverse multiplication table of a number
+//  Input         : Integer
+//  Output        : Prints the table from (iNo * 10) to (iNo * 1)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 27/10/2025
+//  Date          : 19/11/2025
 //
 ///////////////////////////////////////////////////////////////////
-void MultipleDisplay(int iNo)
-{
+void DisplayTable(int iNo)
+{ 
     int iCnt = 0;
+    int iMult = 1;
 
     // Convert negative number to positive
-    if(iNo < 0)
+    if (iNo < 0)
     {
         iNo = -iNo;
     }
 
-    // Display first 5 multiples of the number
-    for(iCnt = 1; iCnt <= 5; iCnt++)
+    printf("Your Table is:\n");
+
+    // Loop starts from 10 down to 1
+    for(iCnt = 10; iCnt >= 1; iCnt--)
     {
-        printf("%d\t", iNo * iCnt);
+        iMult = iCnt * iNo;   // Calculate multiplication
+        printf("%d\n", iMult); // Print result
     }
 }
 
@@ -51,12 +53,12 @@ void MultipleDisplay(int iNo)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;
+    int iValue1 = 0;
 
-    printf("Enter Number :\t");
-    scanf("%d", &iValue);
+    printf("Enter Your Number:\n");
+    scanf("%d", &iValue1);
 
-    MultipleDisplay(iValue);
+    DisplayTable(iValue1);
 
     return 0;
 }
@@ -66,9 +68,16 @@ int main()
 //  Example Output:
 //
 //  Input  : 5
-//  Output : 5   10   15   20   25
-//
-//  Input  : -3
-//  Output : 3   6   9   12   15
+//  Output :
+//           50
+//           45
+//           40
+//           35
+//           30
+//           25
+//           20
+//           15
+//           10
+//           5
 //
 ///////////////////////////////////////////////////////////////////
