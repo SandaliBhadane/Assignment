@@ -1,46 +1,63 @@
 /*
-   Algorithm
+   Algorithm:
    START
-      Accept full name from user (including spaces)
-      Display the entered name
+      Accept a number from user
+      Loop from 1 to that number
+         Print pattern *$
+      End Loop
    STOP
 */
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Required Header Files
+//  Required Header File
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
 
 ///////////////////////////////////////////////////////////////////
 //
+//  Function Name : Pattern
+//  Description   : Prints pattern of *$ for given number of times
+//  Input         : Integer 
+//  Output        : Displays pattern
+//  Author        : Sandali Sunil Bhadane
+//  Date          : 27/10/2025
+//
+///////////////////////////////////////////////////////////////////
+void Pattern(int iNo)
+{
+    int iCnt = 0;
+
+    // Loop to print pattern *$ iNo times
+    for(iCnt = 1; iCnt <= iNo; iCnt++)
+    {
+        printf("*$\t");
+    }
+}
+
+///////////////////////////////////////////////////////////////////
+//
 //  Entry Point Function
-//  Description : Accept and display full name using scanf()
-//  Author      : Sandali Sunil Bhadane
-//  Date        : 21/10/2025
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    char Name[30];    // Character array to store full name
+    int iValue = 0;
 
-    printf("Please enter full name\t: ");
-    
-    // %[^\n] tells scanf to read input until user presses Enter (includes spaces)
-    scanf("%[^\n]", Name);
+    printf("Enter number: ");
+    scanf("%d", &iValue);
 
-    printf("Your Name is\t : %s", Name);
+    Pattern(iValue);
 
     return 0;
 }
-// End of Main
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Example Output
+//  Example Output:
 //
-//  Input  : Sandali Sunil Bhadane
-//  Output : Your Name is : Sandali Sunil Bhadane
+//  Input  : 4
+//  Output : *$	*$	*$	*$
 //
 ///////////////////////////////////////////////////////////////////

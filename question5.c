@@ -1,12 +1,12 @@
 /*
    Algorithm:
    START
-      Accept total marks and obtained marks from user
-      If total or obtained marks are 0
-         Return 0
-      Else
-         Calculate percentage = (obtained / total) * 100
+      Accept a number from the user
+      If number is negative, convert it to positive
+      Loop from 1 to 5
+         Multiply the number by the loop counter
          Display the result
+      End Loop
    STOP
 */
 
@@ -19,28 +19,29 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Percentage
-//  Description   : Calculates percentage based on total and obtained marks
-//  Input         : float, float
-//  Output        : float (percentage)
+//  Function Name : MultipleDisplay
+//  Description   : Displays first 5 multiples of a given number
+//  Input         : Integer (iNo)
+//  Output        : Sequence of multiples printed on screen
 //  Author        : Sandali Sunil Bhadane
 //  Date          : 27/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-float Percentage(float fTotal, float fObtained)
+void MultipleDisplay(int iNo)
 {
-    float fPrcnt = 0.0;
+    int iCnt = 0;
 
-    // If total or obtained marks are 0, return 0
-    if (fTotal == 0 || fObtained == 0)
+    // Convert negative number to positive
+    if(iNo < 0)
     {
-        return 0;
+        iNo = -iNo;
     }
 
-    // Calculate percentage
-    fPrcnt = (fObtained / fTotal) * 100;
-
-    return fPrcnt;
+    // Display first 5 multiples of the number
+    for(iCnt = 1; iCnt <= 5; iCnt++)
+    {
+        printf("%d\t", iNo * iCnt);
+    }
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -50,31 +51,24 @@ float Percentage(float fTotal, float fObtained)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    float fTotal = 0.0, fObtained = 0.0;  // Input variables
-    float fRet = 0.0;                     // To store percentage result
+    int iValue = 0;
 
-    printf("Please enter total marks: ");
-    scanf("%f", &fTotal);
+    printf("Enter Number :\t");
+    scanf("%d", &iValue);
 
-    printf("Please enter obtained marks: ");
-    scanf("%f", &fObtained);
-
-    fRet = Percentage(fTotal, fObtained);
-
-    // %.2f used to display 2 digits after decimal point
-    printf("Total Percentage is: %.2f%%", fRet);
+    MultipleDisplay(iValue);
 
     return 0;
 }
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Example Output
+//  Example Output:
 //
-//  Input  : Total = 500, Obtained = 425
-//  Output : Total Percentage is: 85.00%
+//  Input  : 5
+//  Output : 5   10   15   20   25
 //
-//  Input  : Total = 0, Obtained = 300
-//  Output : Total Percentage is: 0.00%
+//  Input  : -3
+//  Output : 3   6   9   12   15
 //
 ///////////////////////////////////////////////////////////////////

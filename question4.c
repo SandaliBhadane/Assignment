@@ -1,12 +1,13 @@
 /*
-   Algorithm
+   Algorithm:
    START
-      Accept three numbers from user
-      If any number is 0
-         Return 0
-      Else
-         Multiply all three numbers
-         Return the result
+      Accept a number from the user
+      If number is negative, convert it to positive
+      Loop from 1 to iNo
+         If current number is odd
+            Display the number
+         End If
+      End Loop
    STOP
 */
 
@@ -19,28 +20,32 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Multiply
-//  Description   : Performs multiplication of three numbers
-//  Input         : Integer (iNo1, iNo2, iNo3)
-//  Output        : Integer (Multiplication result)
+//  Function Name : OddDisplay
+//  Description   : Displays all odd numbers up to the given number
+//  Input         : Integer (iNo)
+//  Output        : Sequence of odd numbers printed on screen
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 25/10/2025
+//  Date          : 27/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int Multiply(int iNo1, int iNo2, int iNo3)
+void OddDisplay(int iNo)
 {
-    int iResult = 0;
+    int iCnt = 0;
 
-    // If any input number is 0, result will be 0
-    if(iNo1 == 0 || iNo2 == 0 || iNo3 == 0)
+    // Convert negative number to positive
+    if(iNo < 0)
     {
-        return 0;
+        iNo = -iNo;
     }
 
-    // Multiplying all three numbers
-    iResult = iNo1 * iNo2 * iNo3;
-
-    return iResult;
+    // Print all odd numbers up to iNo
+    for(iCnt = 1; iCnt <= iNo; iCnt++)
+    {
+        if((iCnt % 2) != 0)
+        { 
+            printf("%d\t", iCnt);
+        }
+    }
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -50,26 +55,21 @@ int Multiply(int iNo1, int iNo2, int iNo3)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue1 = 0, iValue2 = 0, iValue3 = 0;  // Input variables
-    int iRet = 0;                               // To store result
+    int iValue = 0;
 
-    printf("Please enter three numbers: ");
-    scanf("%d%d%d", &iValue1, &iValue2, &iValue3);
+    printf("Enter Number :\t");
+    scanf("%d", &iValue);
 
-    iRet = Multiply(iValue1, iValue2, iValue3);
-    printf("Multiplication is : %d", iRet);
+    OddDisplay(iValue);
 
     return 0;
 }
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Example Output
+//  Example Output:
 //
-//  Input  : 2 3 4
-//  Output : Multiplication is : 24
-//
-//  Input  : 0 5 7
-//  Output : Multiplication is : 0
+//  Input  : 10
+//  Output : 1   3   5   7   9
 //
 ///////////////////////////////////////////////////////////////////

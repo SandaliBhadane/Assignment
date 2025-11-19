@@ -1,41 +1,45 @@
 /*
-   Algorithm
+   Algorithm:
    START
-      Accept two numbers from user
-      If both numbers are equal
-         Display "Equal"
-      Else
-         Display "Not Equal"
+      Accept a number from the user
+      If number is negative, convert it to positive
+      Loop from -iNo to +iNo
+         Print each number
+      End Loop
    STOP
 */
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Required Header Files
+//  Required Header File
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
-#include<stdbool.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : ChkEqual
-//  Description   : Checks whether two numbers are equal
-//  Input         : Integer (iNo1, iNo2)
-//  Output        : Boolean (true / false)
+//  Function Name : Display
+//  Description   : Displays numbers from -iNo to +iNo
+//  Input         : Integer
+//  Output        : Sequence of numbers printed on screen
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 24/10/2025
+//  Date          : 27/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-bool ChkEqual(int iNo1, int iNo2)
+void Display(int iNo)
 {
-    if(iNo1 == iNo2)
+    int iCnt = 0;
+
+    // Convert negative number to positive
+    if(iNo < 0)
     {
-        return true;     // Numbers are equal
+        iNo = -iNo;
     }
-    else
+
+    // Print numbers from -iNo to +iNo
+    for(iCnt = -iNo; iCnt <= iNo; iCnt++)
     {
-        return false;    // Numbers are not equal
+        printf("%d\t", iCnt);
     }
 }
 
@@ -46,34 +50,21 @@ bool ChkEqual(int iNo1, int iNo2)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue1 = 0, iValue2 = 0;   // Variables for input numbers
-    bool bRet = false;              // Variable to store function result
+    int iValue = 0;
 
-    printf("Please enter two numbers: ");
-    scanf("%d%d", &iValue1, &iValue2);
+    printf("Enter Number :\t");
+    scanf("%d", &iValue);
 
-    bRet = ChkEqual(iValue1, iValue2);
-
-    if(bRet == true)
-    {
-        printf("Equal");
-    }
-    else
-    {
-        printf("Not Equal");
-    }
+    Display(iValue);
 
     return 0;
 }
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Example Output
+//  Example Output:
 //
-//  Input  : 10 10
-//  Output : Equal
-//
-//  Input  : 5 12
-//  Output : Not Equal
+//  Input  : 5
+//  Output : -5  -4  -3  -2  -1  0  1  2  3  4  5
 //
 ///////////////////////////////////////////////////////////////////

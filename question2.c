@@ -1,41 +1,45 @@
 /*
-   Algorithm
+   Algorithm:
    START
-      Accept a number from user
-      If number > 100
-         Display "Greater"
-      Else
-         Display "Smaller"
+      Accept a number from the user
+      If number is negative, convert it to positive
+      Loop from 1 to that number
+         Print each number
+      End Loop
    STOP
 */
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Required Header Files
+//  Required Header File
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
-#include<stdbool.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : ChkGreater
-//  Description   : Checks whether the given number is greater than 100
+//  Function Name : Display
+//  Description   : Prints numbers from 1 to given number
 //  Input         : Integer (iNo)
-//  Output        : Boolean (true / false)
+//  Output        : Displays numbers on screen
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 24/10/2025
+//  Date          : 27/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-bool ChkGreater(int iNo)
+void Display(int iNo)
 {
-    if(iNo > 100)
+    int iCnt = 0;
+
+    // Convert negative number to positive
+    if(iNo < 0)
     {
-        return true;     // Number is greater than 100
+        iNo = -iNo;
     }
-    else
+
+    // Loop to print numbers from 1 to iNo
+    for(iCnt = 1; iCnt <= iNo; iCnt++)
     {
-        return false;    // Number is 100 or smaller
+        printf("%d\t", iCnt);
     }
 }
 
@@ -46,34 +50,21 @@ bool ChkGreater(int iNo)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;     // Variable to store user input
-    bool bRet = false;  // To store function result
+    int iValue = 0;
 
-    printf("Please enter number:\t");
+    printf("Enter number:\t");
     scanf("%d", &iValue);
 
-    bRet = ChkGreater(iValue);
-
-    if(bRet == true)
-    {
-        printf("Greater");
-    }
-    else
-    {
-        printf("Smaller");
-    }
+    Display(iValue);
 
     return 0;
 }
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Example Output
+//  Example Output:
 //
-//  Input  : 150
-//  Output : Greater
-//
-//  Input  : 45
-//  Output : Smaller
+//  Input  : 5
+//  Output : 1    2    3    4    5
 //
 ///////////////////////////////////////////////////////////////////
