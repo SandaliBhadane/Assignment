@@ -1,12 +1,17 @@
 /*
    Algorithm
    START
-      Accept a character from the user
-      Convert the character to lowercase for uniform comparison
-      Check if it is 'a', 'e', 'i', 'o', or 'u'
-         If yes, it is a vowel
-         Otherwise, it is not a vowel
-      Display the result
+      Accept a number from the user
+      If number is negative, convert it to positive
+      Initialize two variables:
+         iFactSum = 0  (for sum of factors)
+         iNonFactSum = 0 (for sum of non-factors)
+      Run loop from 1 to iNo
+         If current number divides iNo completely (iNo % iFact == 0)
+            Add it to iFactSum
+         Else
+            Add it to iNonFactSum
+      Return (iFactSum - iNonFactSum)
    STOP
 */
 
@@ -16,54 +21,60 @@
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
-#include<ctype.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : CheckVowel
-//  Description   : Used to check whether a given character is a vowel or not
-//  Input         : Character
-//  Output        : Integer (1 for vowel, 0 for not vowel)
+//  Function Name : SumNonFact
+//  Description   : Used to find difference between summation of 
+//                  all its factors and non-factors
+//  Input         : Integer (Number)
+//  Output        : Integer (Difference)
 //  Author        : Sandali Sunil Bhadane
 //  Date          : 20/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int CheckVowel(char cCheck)
+int SumNonFact(int iNo)
 {
-    cCheck = tolower(cCheck);                     // Convert to lowercase
+    int iFact = 0;           // Loop counter
+    int iFactSum = 0;        // To store sum of factors
+    int iNonFactSum = 0;     // To store sum of non-factors
 
-    if(cCheck == 'a' || cCheck == 'e' || 
-       cCheck == 'i' || cCheck == 'o' || cCheck == 'u')  // Check vowels
+    if(iNo <= 0)             // Input validation
     {
-        return 1;                                 // It is a vowel
+        iNo = -iNo;
     }
-    else
+
+    for(iFact = 1; iFact <= iNo; iFact++)    // Loop through all numbers
     {
-        return 0;                                 // Not a vowel
+        if((iNo % iFact) == 0)               // If factor
+        {
+            iFactSum = iFactSum + iFact;
+        }
+        else                                 // If non-factor
+        {
+            iNonFactSum = iNonFactSum + iFact;
+        }
     }
+
+    return iFactSum - iNonFactSum;           // Return the difference
 }
-// End of CheckVowel()
+// End of SumNonFact()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry Point Function for the Application
+//  Entry Point Function
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    char cValue = '\0';                           // To accept user input
+    int iValue = 0;          // To accept user input
+    int iRet = 0;            // To store result
 
-    printf("Enter a Character: ");
-    scanf("%c", &cValue);
+    printf("Enter the number: ");
+    scanf("%d", &iValue);
 
-    if(CheckVowel(cValue))                        // Function call
-    {
-        printf("%c is Vowel\n", cValue);
-    }
-    else
-    {
-        printf("%c is Not Vowel\n", cValue);
-    }
+    iRet = SumNonFact(iValue);               // Function call
+    printf("Difference is : %d", iRet);      // Display result
 
     return 0;
 }
@@ -73,11 +84,20 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : A   Output : A is Vowel
-//  Input : e   Output : e is Vowel
-//  Input : K   Output : K is Not Vowel
-//  Input : u   Output : u is Vowel
-//  Input : x   Output : x is Not Vowel
+//  Input : 12
+//  Factors     : 1, 2, 3, 4, 6, 12   → Sum = 28
+//  Non-Factors : 5, 7, 8, 9, 10, 11  → Sum = 50
+//  Difference  : 28 - 50 = -22
 //
+//  Input : 10
+//  Factors     : 1, 2, 5, 10  → Sum = 18
+//  Non-Factors : 3, 4, 6, 7, 8, 9 → Sum = 37
+//  Difference  : 18 - 37 = -19
+//
+//  Input : -6
+//  Treated as positive 6
+//  Factors     : 1, 2, 3, 6 -> Sum = 12
+//  Non-Factors : 4, 5 -> Sum = 9
+//  Difference  : 12 - 9 = 3
 //
 ///////////////////////////////////////////////////////////////////

@@ -1,12 +1,11 @@
 /*
    Algorithm
    START
-      Accept a number from user
-      If number is negative, convert it into positive
-      Run a loop from 1 to number/2
-         Check if current number divides input number completely
-         Also check if current number is even
-         If both conditions are true, print that number
+      Accept a number from the user
+      If the number is negative, convert it into positive
+      Run a loop from 1 to the number
+         Check if the current number does NOT divide the input number completely
+         If yes, print it (it is a non-factor)
    STOP
 */
 
@@ -19,32 +18,32 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : DisplayEvenFactor
-//  Description   : It is used to display all even factors of a number
+//  Function Name : NonFact
+//  Description   : Used to display all non-factors of a given number
 //  Input         : Integer (Number)
-//  Output        : None (Displays even factors on screen)
+//  Output        : None (Displays non-factors on screen)
 //  Author        : Sandali Sunil Bhadane
 //  Date          : 20/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void DisplayEvenFactor(int iNo)
+void NonFact(int iNo)
 {
-    int i = 0;                            // Loop counter
+    int iFact = 0;                       // Loop counter
 
-    if(iNo <= 0)                          // Input validation
+    if(iNo <= 0)                         // Input validation
     {
-        iNo = -iNo;                       // Convert negative to positive
+        iNo = -iNo;                      // Convert negative to positive
     }
 
-    for(i = 1; i <= iNo / 2; i++)         // Loop till half of the number
+    for(iFact = 1; iFact <= iNo; iFact++)   // Loop from 1 to number
     {
-        if((iNo % i == 0) && (i % 2 == 0))  // Check if i is even factor
+        if((iNo % iFact) != 0)              // Check if iFact is not a factor
         {
-            printf("%d\t", i);              // Display even factor
+            printf("%d\t", iFact);          // Display non-factor
         }
     }
 }
-// End of DisplayEvenFactor()
+// End of NonFact()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -53,12 +52,12 @@ void DisplayEvenFactor(int iNo)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                        // To accept user input
+    int iValue = 0;                      // To accept user input
 
-    printf("Enter number: ");
+    printf("Enter Number: ");
     scanf("%d", &iValue);
 
-    DisplayEvenFactor(iValue);             // Function call
+    NonFact(iValue);                     // Function call
 
     return 0;
 }
@@ -68,10 +67,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 12   Output : 2   4   6
-//  Input : 18   Output : 2   6
-//  Input : -20  Output : 2   4   10
-//  Input : 7    Output : (No even factors)
+//  Input : 12   Output : 5   7   8   9   10   11
+//  Input : 10   Output : 3   4   6   7   8   9
+//  Input : -6   Output : 4   5
+//  Input : 7    Output : 2   3   4   5   6
 //
 //
 ///////////////////////////////////////////////////////////////////

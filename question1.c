@@ -1,11 +1,13 @@
 /*
    Algorithm
    START
-      Accept a number from user
-      If number is less than or equal to 0, stop
-      Use a loop from 1 to that number
-         Multiply each counter by 2
-         Print the result
+      Accept a number from the user
+      If number is negative, convert it to positive
+      Initialize multiplication result as 1
+      Run a loop from 1 to the number
+         Check if current number divides input number completely
+         If yes, multiply it with the result
+      Return the final multiplication result
    STOP
 */
 
@@ -18,31 +20,35 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : PrintEven
-//  Description   : Used to print first N even numbers
+//  Function Name : MultFact
+//  Description   : Used to calculate multiplication of all factors of a number
 //  Input         : Integer (Number)
-//  Output        : None (Displays even numbers on screen)
+//  Output        : Integer (Multiplication of all factors)
 //  Author        : Sandali Sunil Bhadane
 //  Date          : 20/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void PrintEven(int iNo)
+int MultFact(int iNo)
 {
-    int iCnt = 0;                    // Loop counter
-    int iEven = 0;                   // Variable to store even number
+    int iFact = 0;                  // Loop counter
+    int iMulti = 1;                 // Variable to store multiplication of factors
 
-    if(iNo <= 0)                     // Input validation
+    if (iNo <= 0)                   // Input validation
     {
-        return;                      // Stop if invalid input
+        iNo = -iNo;                 // Convert negative number to positive
     }
 
-    for (iCnt = 1; iCnt <= iNo; iCnt++)   // Loop till iNo
+    for(iFact = 1; iFact <= iNo; iFact++)  // Loop from 1 to given number
     {
-        iEven = iCnt * 2;                 // Generate even number
-        printf("%d\t", iEven);            // Display even number
+        if((iNo % iFact) == 0)             // Check if iFact is a factor
+        {
+            iMulti = iMulti * iFact;       // Multiply the factor
+        }
     }
+
+    return iMulti;                         // Return final result
 }
-// End of PrintEven()
+// End of MultFact()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -51,12 +57,15 @@ void PrintEven(int iNo)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                  // Variable to accept input
+    int iValue = 0;                        // To accept user input
+    int iRet = 0;                          // To store function result
 
     printf("Enter Number: ");
     scanf("%d", &iValue);
 
-    PrintEven(iValue);               // Function call
+    iRet = MultFact(iValue);               // Function call
+
+    printf("Multiplication of all factors is: %d\n", iRet);
 
     return 0;
 }
@@ -66,10 +75,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 5   Output : 2   4   6   8   10
-//  Input : 3   Output : 2   4   6
-//  Input : 0   Output : (No Output)
-//  Input : -4  Output : (No Output)
+//  Input : 6   Output : 1 * 2 * 3 * 6 = 36
+//  Input : 10  Output : 1 * 2 * 5 * 10 = 100
+//  Input : -8  Output : 1 * 2 * 4 * 8 = 64
+//  Input : 1   Output : 1
 //
 //
 ///////////////////////////////////////////////////////////////////
