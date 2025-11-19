@@ -1,11 +1,12 @@
-/* 
+/*
    Algorithm
    START
-      Accept a number from the user
-      If the number is less than 10
-         Display "Hello"
-      Otherwise
-         Display "Demo"
+      Accept a number from user
+      If number is negative, convert it into positive
+      Run a loop from 1 to number/2
+         Check if current number divides input number completely
+         Also check if current number is even
+         If both conditions are true, print that number
    STOP
 */
 
@@ -18,40 +19,46 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Display
-//  Description   : It is used to display "Hello" if number is less than 10, otherwise "Demo"
-//  Input         : Integer
-//  Output        : None
+//  Function Name : DisplayEvenFactor
+//  Description   : It is used to display all even factors of a number
+//  Input         : Integer (Number)
+//  Output        : None (Displays even factors on screen)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 19/10/2025
+//  Date          : 20/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int Display(int iNo)
+void DisplayEvenFactor(int iNo)
 {
-    if (iNo < 10)                     // Condition check
+    int i = 0;                            // Loop counter
+
+    if(iNo <= 0)                          // Input validation
     {
-        printf("Hello");
+        iNo = -iNo;                       // Convert negative to positive
     }
-    else                              // Otherwise block
+
+    for(i = 1; i <= iNo / 2; i++)         // Loop till half of the number
     {
-        printf("Demo");
+        if((iNo % i == 0) && (i % 2 == 0))  // Check if i is even factor
+        {
+            printf("%d\t", i);              // Display even factor
+        }
     }
 }
-// End of Display()
+// End of DisplayEvenFactor()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry point Function for the Application.
+//  Entry Point Function for the Application
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                   // To accept user input
+    int iValue = 0;                        // To accept user input
 
-    printf("Enter the number: ");
+    printf("Enter number: ");
     scanf("%d", &iValue);
 
-    Display(iValue);                  // Function call
+    DisplayEvenFactor(iValue);             // Function call
 
     return 0;
 }
@@ -61,10 +68,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 5    Output : Hello
-//  Input : 9    Output : Hello
-//  Input : 10   Output : Demo
-//  Input : 15   Output : Demo
+//  Input : 12   Output : 2   4   6
+//  Input : 18   Output : 2   6
+//  Input : -20  Output : 2   4   10
+//  Input : 7    Output : (No even factors)
 //
 //
 ///////////////////////////////////////////////////////////////////

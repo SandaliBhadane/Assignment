@@ -1,10 +1,12 @@
-/* 
+/*
    Algorithm
    START
-      Accept a number and its frequency from the user
-      If the number is negative, convert it to positive
-      If the frequency is negative, convert it to positive
-      Use a loop to display the number 'frequency' times
+      Accept a character from user
+      If character is uppercase (A–Z)
+         Convert it to lowercase by adding 32
+      Else if character is lowercase (a–z)
+         Convert it to uppercase by subtracting 32
+      Display the converted character
    STOP
 */
 
@@ -17,51 +19,41 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Display
-//  Description   : It is used to display a number multiple times based on given frequency
-//  Input         : Integer (Number), Integer (Frequency)
-//  Output        : None
+//  Function Name : DisplayConvert
+//  Description   : Used to convert uppercase character to lowercase 
+//                  and lowercase character to uppercase
+//  Input         : Character
+//  Output        : None (Displays converted character on screen)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 19/10/2025
+//  Date          : 20/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int Display(int iNo, int iFrequency)
+int DisplayConvert(char cValue)
 {
-    int i = 0;                         // Loop counter
-
-    if (iNo < 0)                       // Updator - handle negative number
+    if(cValue >= 'A' && cValue <= 'Z')      // Check for uppercase
     {
-        iNo = -iNo;
+        printf("%c\n", cValue + 32);        // Convert to lowercase
     }
-    if (iFrequency < 0)                // Updator - handle negative frequency
+    else if(cValue >= 'a' && cValue <= 'z') // Check for lowercase
     {
-        iFrequency = -iFrequency;
-    }
-
-    for(i = 0; i < iFrequency; i++)    // Loop runs iFrequency times
-    {
-        printf("%d ", iNo);
+        printf("%c\n", cValue - 32);        // Convert to uppercase
     }
 }
-// End of Display()
+// End of DisplayConvert()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry point Function for the Application.
+//  Entry Point Function for the Application
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                    // To accept number from user
-    int iCount = 0;                    // To accept frequency from user
+    char cValue = '\0';                     // To accept character input
 
-    printf("Enter number: ");
-    scanf("%d", &iValue);
+    printf("Enter Character: ");
+    scanf("%c", &cValue);
 
-    printf("Enter frequency: ");
-    scanf("%d", &iCount);
-
-    Display(iValue, iCount);           // Function call
+    DisplayConvert(cValue);                 // Function call
 
     return 0;
 }
@@ -71,10 +63,11 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 5   Frequency : 3   Output : 5 5 5
-//  Input : 7   Frequency : 1   Output : 7
-//  Input : -3  Frequency : 4   Output : 3 3 3 3
-//  Input : 2   Frequency : 0   Output : (No Output)
+//  Input : A   Output : a
+//  Input : z   Output : Z
+//  Input : M   Output : m
+//  Input : m   Output : M
+//  Input : #   Output : (No output – not an alphabet)
 //
 //
 ///////////////////////////////////////////////////////////////////

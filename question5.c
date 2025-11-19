@@ -1,10 +1,12 @@
 /*
    Algorithm
    START
-      Accept a number from the user
-      Divide the number by 2 and store the remainder
-      If remainder is 0, number is even
-      Else, number is odd
+      Accept a character from the user
+      Convert the character to lowercase for uniform comparison
+      Check if it is 'a', 'e', 'i', 'o', or 'u'
+         If yes, it is a vowel
+         Otherwise, it is not a vowel
+      Display the result
    STOP
 */
 
@@ -14,34 +16,33 @@
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
-#include<stdbool.h>
+#include<ctype.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : CheckEven
-//  Description   : Used to check whether the given number is even or odd
-//  Input         : Integer (Number)
-//  Output        : Boolean (True / False)
+//  Function Name : CheckVowel
+//  Description   : Used to check whether a given character is a vowel or not
+//  Input         : Character
+//  Output        : Integer (1 for vowel, 0 for not vowel)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 19/10/2025
+//  Date          : 20/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-bool CheckEven(int iNo)
+int CheckVowel(char cCheck)
 {
-    int iRem = 0;                    // Variable to store remainder
+    cCheck = tolower(cCheck);                     // Convert to lowercase
 
-    iRem = iNo % 2;                  // Divide number by 2
-
-    if(iRem == 0)                    // If remainder is 0
+    if(cCheck == 'a' || cCheck == 'e' || 
+       cCheck == 'i' || cCheck == 'o' || cCheck == 'u')  // Check vowels
     {
-        return true;                 // Number is even
+        return 1;                                 // It is a vowel
     }
     else
     {
-        return false;                // Number is odd
+        return 0;                                 // Not a vowel
     }
 }
-// End of CheckEven()
+// End of CheckVowel()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -50,23 +51,18 @@ bool CheckEven(int iNo)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                  // Variable to accept number
-    bool bRet = false;               // Variable to store result
+    char cValue = '\0';                           // To accept user input
 
-    printf("Enter Number: ");
-    scanf("%d", &iValue);
+    printf("Enter a Character: ");
+    scanf("%c", &cValue);
 
-    bRet = CheckEven(iValue);        // Function call
-
-    printf("Result is %d\n", bRet);  // Display boolean result (1/0)
-
-    if(bRet == true)
+    if(CheckVowel(cValue))                        // Function call
     {
-        printf("Number is Even.\n");
+        printf("%c is Vowel\n", cValue);
     }
     else
     {
-        printf("Number is Odd.\n");
+        printf("%c is Not Vowel\n", cValue);
     }
 
     return 0;
@@ -77,9 +73,11 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 4   Output : Even
-//  Input : 7   Output : Odd
-//  Input : 0   Output : Even
-//  Input : -6  Output : Even
+//  Input : A   Output : A is Vowel
+//  Input : e   Output : e is Vowel
+//  Input : K   Output : K is Not Vowel
+//  Input : u   Output : u is Vowel
+//  Input : x   Output : x is Not Vowel
+//
 //
 ///////////////////////////////////////////////////////////////////

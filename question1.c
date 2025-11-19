@@ -1,9 +1,11 @@
-/* 
+/*
    Algorithm
    START
-      Accept a number from the user
-      If the number is negative, convert it to positive
-      Use a loop to print '*' that many times
+      Accept a number from user
+      If number is less than or equal to 0, stop
+      Use a loop from 1 to that number
+         Multiply each counter by 2
+         Print the result
    STOP
 */
 
@@ -16,44 +18,45 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Display
-//  Description   : It is used to display '*' on the screen given number of times
-//  Input         : Integer
-//  Output        : None
+//  Function Name : PrintEven
+//  Description   : Used to print first N even numbers
+//  Input         : Integer (Number)
+//  Output        : None (Displays even numbers on screen)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 18/10/2025
+//  Date          : 20/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void Display(int iNo)
+void PrintEven(int iNo)
 {
-    int iCnt = 0;                     // Loop counter
+    int iCnt = 0;                    // Loop counter
+    int iEven = 0;                   // Variable to store even number
 
-    if(iNo < 0)                       // Updator - to handle negative input
+    if(iNo <= 0)                     // Input validation
     {
-        iNo = -iNo;
+        return;                      // Stop if invalid input
     }
 
-    while(iCnt < iNo)                 // Loop runs iNo times
+    for (iCnt = 1; iCnt <= iNo; iCnt++)   // Loop till iNo
     {
-        printf("*");
-        iCnt++;
+        iEven = iCnt * 2;                 // Generate even number
+        printf("%d\t", iEven);            // Display even number
     }
 }
-// End of Display()
+// End of PrintEven()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry point Function for the Application.
+//  Entry Point Function for the Application
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                   // To accept user input
+    int iValue = 0;                  // Variable to accept input
 
-    printf("Enter number: ");
+    printf("Enter Number: ");
     scanf("%d", &iValue);
 
-    Display(iValue);                  // Function call
+    PrintEven(iValue);               // Function call
 
     return 0;
 }
@@ -63,10 +66,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 5    Output : *****
-//  Input : 3    Output : ***
-//  Input : 0    Output : (No Output)
-//  Input : -4   Output : ****
+//  Input : 5   Output : 2   4   6   8   10
+//  Input : 3   Output : 2   4   6
+//  Input : 0   Output : (No Output)
+//  Input : -4  Output : (No Output)
 //
 //
 ///////////////////////////////////////////////////////////////////

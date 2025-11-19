@@ -1,11 +1,11 @@
-/* 
+/*
    Algorithm
    START
-      Accept a number from the user
-      If the number is negative, convert it to positive
-      While the number is greater than 0
-         Print '*'
-         Decrease the number by 1
+      Accept a number from user
+      If number is negative, convert it to positive
+      Use a loop from 2 to the number, increment by 2
+         Check if current number divides the input number completely
+         If yes, print it (it is an even factor)
    STOP
 */
 
@@ -18,42 +18,46 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Display
-//  Description   : It is used to display '*' on the screen given number of times
-//  Input         : Integer
-//  Output        : None
+//  Function Name : DisplayFactors
+//  Description   : Used to display all even factors of a given number
+//  Input         : Integer (Number)
+//  Output        : None (Displays even factors on screen)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 19/10/2025
+//  Date          : 09/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void Display(int iNo)
+void DisplayFactors(int iNo)
 {
-    if(iNo < 0)                  // Updator - to handle negative input
+    int i = 0;                   // Loop counter
+
+    if(iNo <= 0)                 // Input validation
     {
-        iNo = -iNo;
+        iNo = -iNo;              // Convert negative to positive
     }
 
-    while (iNo > 0)              // Loop runs until iNo becomes 0
+    for(i = 2; i <= iNo; i = i + 2)   // Loop through even numbers
     {
-        printf("*");
-        iNo--;                   // Decrement the counter
+        if((iNo % i) == 0)            // Check if even number is a factor
+        {
+            printf("%d\t", i);        // Display even factor
+        }
     }
 }
-// End of Display()
+// End of DisplayFactors()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry point Function for the Application.
+//  Entry Point Function for the Application
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;              // To accept user input
+    int iValue = 0;                  // Variable to accept input
 
-    printf("Enter number: ");
+    printf("Enter Number: ");
     scanf("%d", &iValue);
 
-    Display(iValue);             // Function call
+    DisplayFactors(iValue);          // Function call
 
     return 0;
 }
@@ -63,10 +67,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 5    Output : *****
-//  Input : 3    Output : ***
-//  Input : 0    Output : (No Output)
-//  Input : -4   Output : ****
+//  Input : 12   Output : 2   4   6   12
+//  Input : 18   Output : 2   6   18
+//  Input : -12  Output : 2   4   6   12
+//  Input : 5    Output : (No even factors)
 //
 //
 ///////////////////////////////////////////////////////////////////
