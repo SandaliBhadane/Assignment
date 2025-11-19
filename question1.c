@@ -1,11 +1,9 @@
 /* 
    Algorithm
    START
-      Accept first number as iNo1
-      Accept second number as iNo2
-      If iNo2 is zero, return -1 (Invalid Division)
-      Otherwise, perform iNo1 / iNo2
-      Display the result
+      Accept a number from the user
+      If the number is negative, convert it to positive
+      Use a loop to print '*' that many times
    STOP
 */
 
@@ -18,30 +16,30 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Divide
-//  Description   : It is used to perform Division
-//  Input         : Integer, Integer
-//  Output        : Integer
+//  Function Name : Display
+//  Description   : It is used to display '*' on the screen given number of times
+//  Input         : Integer
+//  Output        : None
 //  Author        : Sandali Sunil Bhadane
 //  Date          : 18/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int Divide(
-            int iNo1,        // First Input 
-            int iNo2         // Second Input
-          )               
+void Display(int iNo)
 {
-    int iAns = 0;
+    int iCnt = 0;                     // Loop counter
 
-    if (iNo2 == 0)           // Updator - to handle divide by zero case
+    if(iNo < 0)                       // Updator - to handle negative input
     {
-        return -1;           // Return error code
+        iNo = -iNo;
     }
 
-    iAns = iNo1 / iNo2;      // Business Logic
-    return iAns;
+    while(iCnt < iNo)                 // Loop runs iNo times
+    {
+        printf("*");
+        iCnt++;
+    }
 }
-// End of Divide()
+// End of Display()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -50,12 +48,12 @@ int Divide(
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue1 = 15, iValue2 = 5;      // To Accept user Input
-    int iRet = 0;                       // To Store the result
+    int iValue = 0;                   // To accept user input
 
-    iRet = Divide(iValue1, iValue2);    // Method call (Function call)
+    printf("Enter number: ");
+    scanf("%d", &iValue);
 
-    printf("Division is: %d\n", iRet);
+    Display(iValue);                  // Function call
 
     return 0;
 }
@@ -65,9 +63,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input1 : 10    Input2 : 2    Output : 5
-//  Input1 : 15    Input2 : 3    Output : 5
-//  Input1 : 10    Input2 : 0    Output : -1 (Invalid Division)
-//  Input1 : -20   Input2 : 4    Output : -5
+//  Input : 5    Output : *****
+//  Input : 3    Output : ***
+//  Input : 0    Output : (No Output)
+//  Input : -4   Output : ****
+//
 //
 ///////////////////////////////////////////////////////////////////

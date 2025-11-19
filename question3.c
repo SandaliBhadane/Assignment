@@ -1,11 +1,11 @@
 /* 
    Algorithm
    START
-      Initialize variable i to 5
-      While i is greater than or equal to 1
-         Display the value of i
-         Decrease i by 1
-      End While
+      Accept a number from the user
+      If the number is less than 10
+         Display "Hello"
+      Otherwise
+         Display "Demo"
    STOP
 */
 
@@ -19,23 +19,22 @@
 ///////////////////////////////////////////////////////////////////
 //
 //  Function Name : Display
-//  Description   : It is used to display numbers from 5 to 1 in reverse order
-//  Input         : None
-//  Output        : Integer (but no value returned)
+//  Description   : It is used to display "Hello" if number is less than 10, otherwise "Demo"
+//  Input         : Integer
+//  Output        : None
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 18/10/2025
+//  Date          : 19/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int Display()
+int Display(int iNo)
 {
-    int i = 0;        // Loop counter
-    
-    i = 5;            // Initialize counter
-
-    while (i >= 1)    // Loop till i becomes 1
+    if (iNo < 10)                     // Condition check
     {
-        printf("%d\n", i);
-        i--;           // Decrement counter
+        printf("Hello");
+    }
+    else                              // Otherwise block
+    {
+        printf("Demo");
     }
 }
 // End of Display()
@@ -47,7 +46,13 @@ int Display()
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    Display();         // Function call
+    int iValue = 0;                   // To accept user input
+
+    printf("Enter the number: ");
+    scanf("%d", &iValue);
+
+    Display(iValue);                  // Function call
+
     return 0;
 }
 // End of Main
@@ -56,11 +61,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Output:
-//  5
-//  4
-//  3
-//  2
-//  1
+//  Input : 5    Output : Hello
+//  Input : 9    Output : Hello
+//  Input : 10   Output : Demo
+//  Input : 15   Output : Demo
+//
 //
 ///////////////////////////////////////////////////////////////////

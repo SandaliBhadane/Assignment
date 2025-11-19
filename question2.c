@@ -1,9 +1,11 @@
 /* 
    Algorithm
    START
-      Create a function named Display
-      Use a loop to print "Marvellous" six times
-      Call the Display function from main
+      Accept a number from the user
+      If the number is negative, convert it to positive
+      While the number is greater than 0
+         Print '*'
+         Decrease the number by 1
    STOP
 */
 
@@ -17,20 +19,24 @@
 ///////////////////////////////////////////////////////////////////
 //
 //  Function Name : Display
-//  Description   : It is used to display the word "Marvellous" six times
-//  Input         : None
+//  Description   : It is used to display '*' on the screen given number of times
+//  Input         : Integer
 //  Output        : None
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 18/10/2025
+//  Date          : 19/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void Display()
+void Display(int iNo)
 {
-    int i = 0;               // Loop counter
-
-    for(i = 1; i <= 6; i++)  // Loop runs 6 times
+    if(iNo < 0)                  // Updator - to handle negative input
     {
-        printf("Marvellous\n");
+        iNo = -iNo;
+    }
+
+    while (iNo > 0)              // Loop runs until iNo becomes 0
+    {
+        printf("*");
+        iNo--;                   // Decrement the counter
     }
 }
 // End of Display()
@@ -42,7 +48,13 @@ void Display()
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    Display();               // Function call
+    int iValue = 0;              // To accept user input
+
+    printf("Enter number: ");
+    scanf("%d", &iValue);
+
+    Display(iValue);             // Function call
+
     return 0;
 }
 // End of Main
@@ -51,12 +63,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Output:
-//  Marvellous
-//  Marvellous
-//  Marvellous
-//  Marvellous
-//  Marvellous
-//  Marvellous
+//  Input : 5    Output : *****
+//  Input : 3    Output : ***
+//  Input : 0    Output : (No Output)
+//  Input : -4   Output : ****
+//
 //
 ///////////////////////////////////////////////////////////////////

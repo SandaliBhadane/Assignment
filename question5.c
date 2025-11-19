@@ -1,8 +1,10 @@
-/* 
+/*
    Algorithm
    START
       Accept a number from the user
-      Use a loop to print '*' that many times
+      Divide the number by 2 and store the remainder
+      If remainder is 0, number is even
+      Else, number is odd
    STOP
 */
 
@@ -12,39 +14,60 @@
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
+#include<stdbool.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Accept
-//  Description   : It is used to print '*' on the screen given number of times
-//  Input         : Integer
-//  Output        : None
+//  Function Name : CheckEven
+//  Description   : Used to check whether the given number is even or odd
+//  Input         : Integer (Number)
+//  Output        : Boolean (True / False)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 18/10/2025
+//  Date          : 19/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void Accept(int iNo)
+bool CheckEven(int iNo)
 {
-    int iCnt = 0;                      // Loop counter
+    int iRem = 0;                    // Variable to store remainder
 
-    for (iCnt = 1; iCnt <= iNo; iCnt++) // Loop runs from 1 to iNo
+    iRem = iNo % 2;                  // Divide number by 2
+
+    if(iRem == 0)                    // If remainder is 0
     {
-        printf("*");
+        return true;                 // Number is even
+    }
+    else
+    {
+        return false;                // Number is odd
     }
 }
-// End of Accept()
+// End of CheckEven()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry point Function for the Application.
+//  Entry Point Function for the Application
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                    // To accept number from user
-    iValue = 5;                        // Hardcoded input value
+    int iValue = 0;                  // Variable to accept number
+    bool bRet = false;               // Variable to store result
 
-    Accept(iValue);                    // Function call
+    printf("Enter Number: ");
+    scanf("%d", &iValue);
+
+    bRet = CheckEven(iValue);        // Function call
+
+    printf("Result is %d\n", bRet);  // Display boolean result (1/0)
+
+    if(bRet == true)
+    {
+        printf("Number is Even.\n");
+    }
+    else
+    {
+        printf("Number is Odd.\n");
+    }
 
     return 0;
 }
@@ -54,10 +77,9 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 5   Output : *****
-//  Input : 3   Output : ***
-//  Input : 1   Output : *
-//  Input : 0   Output : (No Output)
-//
+//  Input : 4   Output : Even
+//  Input : 7   Output : Odd
+//  Input : 0   Output : Even
+//  Input : -6  Output : Even
 //
 ///////////////////////////////////////////////////////////////////

@@ -1,11 +1,10 @@
 /* 
    Algorithm
    START
-      Accept a number from the user
-      Check whether the number is divisible by 5
-      If divisible, return true
-      Otherwise, return false
-      Display the result on the screen
+      Accept a number and its frequency from the user
+      If the number is negative, convert it to positive
+      If the frequency is negative, convert it to positive
+      Use a loop to display the number 'frequency' times
    STOP
 */
 
@@ -15,30 +14,36 @@
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
-#include<stdbool.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : Check
-//  Description   : It is used to check whether a number is divisible by 5 or not
-//  Input         : Integer
-//  Output        : Boolean (true / false)
+//  Function Name : Display
+//  Description   : It is used to display a number multiple times based on given frequency
+//  Input         : Integer (Number), Integer (Frequency)
+//  Output        : None
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 18/10/2025
+//  Date          : 19/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-bool Check(int iNo)
+int Display(int iNo, int iFrequency)
 {
-    if((iNo % 5) == 0)       // Check divisibility condition
+    int i = 0;                         // Loop counter
+
+    if (iNo < 0)                       // Updator - handle negative number
     {
-        return true;         // Return true if divisible by 5
+        iNo = -iNo;
     }
-    else
+    if (iFrequency < 0)                // Updator - handle negative frequency
     {
-        return false;        // Return false otherwise
+        iFrequency = -iFrequency;
+    }
+
+    for(i = 0; i < iFrequency; i++)    // Loop runs iFrequency times
+    {
+        printf("%d ", iNo);
     }
 }
-// End of Check()
+// End of Display()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -47,22 +52,16 @@ bool Check(int iNo)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;          // To accept user input
-    bool bRet = false;       // To store result (true/false)
+    int iValue = 0;                    // To accept number from user
+    int iCount = 0;                    // To accept frequency from user
 
-    printf("Enter a Number: ");
+    printf("Enter number: ");
     scanf("%d", &iValue);
 
-    bRet = Check(iValue);    // Function call
+    printf("Enter frequency: ");
+    scanf("%d", &iCount);
 
-    if (bRet == true)
-    {
-        printf("Divisible by 5\n");
-    }
-    else
-    {
-        printf("Not Divisible by 5\n");
-    }
+    Display(iValue, iCount);           // Function call
 
     return 0;
 }
@@ -72,9 +71,10 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 25   Output : Divisible by 5
-//  Input : 21   Output : Not Divisible by 5
-//  Input : 0    Output : Divisible by 5
-//  Input : -10  Output : Divisible by 5
+//  Input : 5   Frequency : 3   Output : 5 5 5
+//  Input : 7   Frequency : 1   Output : 7
+//  Input : -3  Frequency : 4   Output : 3 3 3 3
+//  Input : 2   Frequency : 0   Output : (No Output)
+//
 //
 ///////////////////////////////////////////////////////////////////
