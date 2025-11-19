@@ -1,11 +1,16 @@
 /*
    Algorithm
    START
-      Accept a number from the user
-      If the number is negative, convert it into positive
-      Run a loop from 1 to the number
-         Check if the current number does NOT divide the input number completely
-         If yes, print it (it is a non-factor)
+      Accept a year from user
+      If year is divisible by 400
+         Then it is a Leap Year
+      Else if year is divisible by 100
+         Then it is NOT a Leap Year
+      Else if year is divisible by 4
+         Then it is a Leap Year
+      Else
+         It is NOT a Leap Year
+      Display the result
    STOP
 */
 
@@ -18,46 +23,48 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : NonFact
-//  Description   : Used to display all non-factors of a given number
-//  Input         : Integer (Number)
-//  Output        : None (Displays non-factors on screen)
+//  Function Name : CheckLeapYear
+//  Description   : Used to check whether the entered year is a leap year or not
+//  Input         : Integer (Year)
+//  Output        : Prints whether the year is Leap Year or Not
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 20/10/2025
+//  Date          : 21/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void NonFact(int iNo)
+void CheckLeapYear(int year)
 {
-    int iFact = 0;                       // Loop counter
-
-    if(iNo <= 0)                         // Input validation
+    if(year % 400 == 0)                      // Divisible by 400 -> Leap Year
     {
-        iNo = -iNo;                      // Convert negative to positive
+        printf("%d is a Leap Year.", year);
     }
-
-    for(iFact = 1; iFact <= iNo; iFact++)   // Loop from 1 to number
+    else if(year % 100 == 0)                 // Divisible by 100 -> Not Leap Year
     {
-        if((iNo % iFact) != 0)              // Check if iFact is not a factor
-        {
-            printf("%d\t", iFact);          // Display non-factor
-        }
+        printf("%d is Not a Leap Year.", year);
+    }
+    else if(year % 4 == 0)                   // Divisible by 4 -> Leap Year
+    {
+        printf("%d is a Leap Year.", year);
+    }
+    else                                     // All other years -> Not Leap Year
+    {
+        printf("%d is Not a Leap Year.", year);
     }
 }
-// End of NonFact()
+// End of CheckLeapYear()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry Point Function for the Application
+//  Entry Point Function
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                      // To accept user input
+    int yr = 0;                              // To accept year input
 
-    printf("Enter Number: ");
-    scanf("%d", &iValue);
+    printf("Enter Year: ");
+    scanf("%d", &yr);
 
-    NonFact(iValue);                     // Function call
+    CheckLeapYear(yr);                       // Function call
 
     return 0;
 }
@@ -67,10 +74,9 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 12   Output : 5   7   8   9   10   11
-//  Input : 10   Output : 3   4   6   7   8   9
-//  Input : -6   Output : 4   5
-//  Input : 7    Output : 2   3   4   5   6
-//
+//  Input : 2000  -> Output : 2000 is a Leap Year.
+//  Input : 1900  -> Output : 1900 is Not a Leap Year.
+//  Input : 2024  -> Output : 2024 is a Leap Year.
+//  Input : 2023  -> Output : 2023 is Not a Leap Year.
 //
 ///////////////////////////////////////////////////////////////////

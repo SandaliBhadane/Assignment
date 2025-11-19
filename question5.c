@@ -1,17 +1,13 @@
 /*
    Algorithm
    START
-      Accept a number from the user
-      If number is negative, convert it to positive
-      Initialize two variables:
-         iFactSum = 0  (for sum of factors)
-         iNonFactSum = 0 (for sum of non-factors)
-      Run loop from 1 to iNo
-         If current number divides iNo completely (iNo % iFact == 0)
-            Add it to iFactSum
-         Else
-            Add it to iNonFactSum
-      Return (iFactSum - iNonFactSum)
+      Accept three numbers from user
+      If first number is greater than both second and third
+         Display first number as largest
+      Else if second number is greater than both first and third
+         Display second number as largest
+      Else
+         Display third number as largest
    STOP
 */
 
@@ -24,41 +20,30 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : SumNonFact
-//  Description   : Used to find difference between summation of 
-//                  all its factors and non-factors
-//  Input         : Integer (Number)
-//  Output        : Integer (Difference)
+//  Function Name : FindLargest
+//  Description   : Used to find the largest among three numbers
+//  Input         : Integer, Integer, Integer
+//  Output        : Integer (Largest number)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 20/10/2025
+//  Date          : 21/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int SumNonFact(int iNo)
+int FindLargest(int x, int y, int z)
 {
-    int iFact = 0;           // Loop counter
-    int iFactSum = 0;        // To store sum of factors
-    int iNonFactSum = 0;     // To store sum of non-factors
-
-    if(iNo <= 0)             // Input validation
+    if (x > y && x > z)                 // If first number is greatest
     {
-        iNo = -iNo;
+        return x;
     }
-
-    for(iFact = 1; iFact <= iNo; iFact++)    // Loop through all numbers
+    else if (y > x && y > z)            // If second number is greatest
     {
-        if((iNo % iFact) == 0)               // If factor
-        {
-            iFactSum = iFactSum + iFact;
-        }
-        else                                 // If non-factor
-        {
-            iNonFactSum = iNonFactSum + iFact;
-        }
+        return y;
     }
-
-    return iFactSum - iNonFactSum;           // Return the difference
+    else                                // Otherwise, third number is greatest
+    {
+        return z;
+    }
 }
-// End of SumNonFact()
+// End of FindLargest()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -67,14 +52,15 @@ int SumNonFact(int iNo)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;          // To accept user input
-    int iRet = 0;            // To store result
+    int a = 0, b = 0, c = 0;            // To accept three numbers
+    int result = 0;                     // To store the largest number
 
-    printf("Enter the number: ");
-    scanf("%d", &iValue);
+    printf("Enter three Numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
 
-    iRet = SumNonFact(iValue);               // Function call
-    printf("Difference is : %d", iRet);      // Display result
+    result = FindLargest(a, b, c);      // Function call
+
+    printf("Largest number is: %d\n", result);
 
     return 0;
 }
@@ -84,20 +70,9 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 12
-//  Factors     : 1, 2, 3, 4, 6, 12   → Sum = 28
-//  Non-Factors : 5, 7, 8, 9, 10, 11  → Sum = 50
-//  Difference  : 28 - 50 = -22
-//
-//  Input : 10
-//  Factors     : 1, 2, 5, 10  → Sum = 18
-//  Non-Factors : 3, 4, 6, 7, 8, 9 → Sum = 37
-//  Difference  : 18 - 37 = -19
-//
-//  Input : -6
-//  Treated as positive 6
-//  Factors     : 1, 2, 3, 6 -> Sum = 12
-//  Non-Factors : 4, 5 -> Sum = 9
-//  Difference  : 12 - 9 = 3
+//  Input : 10 20 30  -> Output : 30
+//  Input : 45 12 33  -> Output : 45
+//  Input : 7 7 7     -> Output : 7
+//  Input : -5 0 4    -> Output : 4
 //
 ///////////////////////////////////////////////////////////////////

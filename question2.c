@@ -1,14 +1,3 @@
-/*
-   Algorithm
-   START
-      Accept a number from the user
-      If the number is negative, convert it into positive
-      Run a loop from the number down to 1 (reverse order)
-         Check if the current number divides the input number completely
-         If yes, print it (it is a factor)
-   STOP
-*/
-
 ///////////////////////////////////////////////////////////////////
 //
 //  Required Header Files
@@ -18,46 +7,46 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : FactRev
-//  Description   : Used to display all factors of a given number in reverse order
-//  Input         : Integer (Number)
-//  Output        : None (Displays factors on screen)
+//  Function Name : FindMax
+//  Description   : Used to find the maximum of two given numbers
+//  Input         : Integer, Integer
+//  Output        : Integer (Maximum number)
 //  Author        : Sandali Sunil Bhadane
 //  Date          : 09/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void FactRev(int iNo)
+int FindMax(int a, int b)
 {
-    int iFact = 0;                       // Loop counter
-
-    if(iNo <= 0)                         // Input validation
+    int iResult = 0;                      // To store the result
+    
+    if(a > b)                             // Check if first number is greater
     {
-        iNo = -iNo;                      // Convert negative to positive
+        iResult = a;
+    }
+    else                                  // Otherwise, second number is greater
+    {
+        iResult = b;
     }
 
-    for(iFact = iNo; iFact >= 1; iFact--)  // Loop from number to 1
-    {
-        if((iNo % iFact) == 0)             // Check if iFact is a factor
-        {
-            printf("%d\t", iFact);         // Display factor
-        }
-    }
+    return iResult;                       // Return the maximum value
 }
-// End of FactRev()
+// End of FindMax()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry Point Function for the Application
+//  Entry Point Function
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                      // To accept user input
+    int num1 = 0, num2 = 0, result = 0;   // To accept and store inputs
 
-    printf("Enter the Number: ");
-    scanf("%d", &iValue);
+    printf("Enter two Numbers: ");
+    scanf("%d %d", &num1, &num2);
 
-    FactRev(iValue);                     // Function call
+    result = FindMax(num1, num2);         // Function call
+
+    printf("Maximum is: %d\n", result);   // Display the result
 
     return 0;
 }
@@ -67,10 +56,9 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 12   Output : 12   6   4   3   2   1
-//  Input : 10   Output : 10   5   2   1
-//  Input : -6   Output : 6    3   2   1
-//  Input : 7    Output : 7    1
-//
+//  Input1 : 10   Input2 : 20   Output : 20
+//  Input1 : -5   Input2 : 3    Output : 3
+//  Input1 : 7    Input2 : 7    Output : 7
+//  Input1 : 25   Input2 : 10   Output : 25
 //
 ///////////////////////////////////////////////////////////////////

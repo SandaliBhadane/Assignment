@@ -1,16 +1,3 @@
-/*
-   Algorithm
-   START
-      Accept a number from the user
-      If number is negative, convert it to positive
-      Initialize multiplication result as 1
-      Run a loop from 1 to the number
-         Check if current number divides input number completely
-         If yes, multiply it with the result
-      Return the final multiplication result
-   STOP
-*/
-
 ///////////////////////////////////////////////////////////////////
 //
 //  Required Header Files
@@ -20,52 +7,40 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : MultFact
-//  Description   : Used to calculate multiplication of all factors of a number
-//  Input         : Integer (Number)
-//  Output        : Integer (Multiplication of all factors)
+//  Function Name : CheckEvenOdd
+//  Description   : Used to check whether a given number is even or odd
+//  Input         : Integer
+//  Output        : Prints whether the number is Even or Odd
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 20/10/2025
+//  Date          : 21/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int MultFact(int iNo)
+void CheckEvenOdd(int num)
 {
-    int iFact = 0;                  // Loop counter
-    int iMulti = 1;                 // Variable to store multiplication of factors
-
-    if (iNo <= 0)                   // Input validation
+    if((num % 2) == 0)                 // Condition to check even number
     {
-        iNo = -iNo;                 // Convert negative number to positive
+        printf("Number is Even");
     }
-
-    for(iFact = 1; iFact <= iNo; iFact++)  // Loop from 1 to given number
+    else                               // Executes when number is odd
     {
-        if((iNo % iFact) == 0)             // Check if iFact is a factor
-        {
-            iMulti = iMulti * iFact;       // Multiply the factor
-        }
+        printf("Number is Odd");
     }
-
-    return iMulti;                         // Return final result
 }
-// End of MultFact()
+// End of CheckEvenOdd()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Entry Point Function for the Application
+//  Entry Point Function
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int iValue = 0;                        // To accept user input
-    int iRet = 0;                          // To store function result
+    int number;                        // Variable to accept user input
 
-    printf("Enter Number: ");
-    scanf("%d", &iValue);
+    printf("Enter number: ");
+    scanf("%d", &number);              // Accept number from user
 
-    iRet = MultFact(iValue);               // Function call
-
-    printf("Multiplication of all factors is: %d\n", iRet);
+    CheckEvenOdd(number);              // Function call to check even/odd
 
     return 0;
 }
@@ -75,10 +50,9 @@ int main()
 //
 //  Test Cases successfully handled by the application
 //
-//  Input : 6   Output : 1 * 2 * 3 * 6 = 36
-//  Input : 10  Output : 1 * 2 * 5 * 10 = 100
-//  Input : -8  Output : 1 * 2 * 4 * 8 = 64
-//  Input : 1   Output : 1
-//
+//  Input : 4    → Output : Number is Even
+//  Input : 9    → Output : Number is Odd
+//  Input : 0    → Output : Number is Even
+//  Input : -5   → Output : Number is Odd
 //
 ///////////////////////////////////////////////////////////////////
