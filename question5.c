@@ -1,49 +1,47 @@
 /*
-   Algorithm
+   Algorithm:
    START
-      Accept three numbers from user
-      If first number is greater than both second and third
-         Display first number as largest
-      Else if second number is greater than both first and third
-         Display second number as largest
+      Accept total marks and obtained marks from user
+      If total or obtained marks are 0
+         Return 0
       Else
-         Display third number as largest
+         Calculate percentage = (obtained / total) * 100
+         Display the result
    STOP
 */
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Required Header Files
+//  Required Header File
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : FindLargest
-//  Description   : Used to find the largest among three numbers
-//  Input         : Integer, Integer, Integer
-//  Output        : Integer (Largest number)
+//  Function Name : Percentage
+//  Description   : Calculates percentage based on total and obtained marks
+//  Input         : float, float
+//  Output        : float (percentage)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 21/10/2025
+//  Date          : 27/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int FindLargest(int x, int y, int z)
+float Percentage(float fTotal, float fObtained)
 {
-    if (x > y && x > z)                 // If first number is greatest
+    float fPrcnt = 0.0;
+
+    // If total or obtained marks are 0, return 0
+    if (fTotal == 0 || fObtained == 0)
     {
-        return x;
+        return 0;
     }
-    else if (y > x && y > z)            // If second number is greatest
-    {
-        return y;
-    }
-    else                                // Otherwise, third number is greatest
-    {
-        return z;
-    }
+
+    // Calculate percentage
+    fPrcnt = (fObtained / fTotal) * 100;
+
+    return fPrcnt;
 }
-// End of FindLargest()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -52,27 +50,31 @@ int FindLargest(int x, int y, int z)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int a = 0, b = 0, c = 0;            // To accept three numbers
-    int result = 0;                     // To store the largest number
+    float fTotal = 0.0, fObtained = 0.0;  // Input variables
+    float fRet = 0.0;                     // To store percentage result
 
-    printf("Enter three Numbers: ");
-    scanf("%d %d %d", &a, &b, &c);
+    printf("Please enter total marks: ");
+    scanf("%f", &fTotal);
 
-    result = FindLargest(a, b, c);      // Function call
+    printf("Please enter obtained marks: ");
+    scanf("%f", &fObtained);
 
-    printf("Largest number is: %d\n", result);
+    fRet = Percentage(fTotal, fObtained);
+
+    // %.2f used to display 2 digits after decimal point
+    printf("Total Percentage is: %.2f%%", fRet);
 
     return 0;
 }
-// End of Main
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Test Cases successfully handled by the application
+//  Example Output
 //
-//  Input : 10 20 30  -> Output : 30
-//  Input : 45 12 33  -> Output : 45
-//  Input : 7 7 7     -> Output : 7
-//  Input : -5 0 4    -> Output : 4
+//  Input  : Total = 500, Obtained = 425
+//  Output : Total Percentage is: 85.00%
+//
+//  Input  : Total = 0, Obtained = 300
+//  Output : Total Percentage is: 0.00%
 //
 ///////////////////////////////////////////////////////////////////

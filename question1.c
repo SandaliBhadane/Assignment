@@ -1,3 +1,11 @@
+/*
+   Algorithm
+   START
+      Accept full name from user (including spaces)
+      Display the entered name
+   STOP
+*/
+
 ///////////////////////////////////////////////////////////////////
 //
 //  Required Header Files
@@ -7,40 +15,22 @@
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : CheckEvenOdd
-//  Description   : Used to check whether a given number is even or odd
-//  Input         : Integer
-//  Output        : Prints whether the number is Even or Odd
-//  Author        : Sandali Sunil Bhadane
-//  Date          : 21/10/2025
-//
-///////////////////////////////////////////////////////////////////
-void CheckEvenOdd(int num)
-{
-    if((num % 2) == 0)                 // Condition to check even number
-    {
-        printf("Number is Even");
-    }
-    else                               // Executes when number is odd
-    {
-        printf("Number is Odd");
-    }
-}
-// End of CheckEvenOdd()
-
-///////////////////////////////////////////////////////////////////
-//
 //  Entry Point Function
+//  Description : Accept and display full name using scanf()
+//  Author      : Sandali Sunil Bhadane
+//  Date        : 21/10/2025
 //
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int number;                        // Variable to accept user input
+    char Name[30];    // Character array to store full name
 
-    printf("Enter number: ");
-    scanf("%d", &number);              // Accept number from user
+    printf("Please enter full name\t: ");
+    
+    // %[^\n] tells scanf to read input until user presses Enter (includes spaces)
+    scanf("%[^\n]", Name);
 
-    CheckEvenOdd(number);              // Function call to check even/odd
+    printf("Your Name is\t : %s", Name);
 
     return 0;
 }
@@ -48,11 +38,9 @@ int main()
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Test Cases successfully handled by the application
+//  Example Output
 //
-//  Input : 4    → Output : Number is Even
-//  Input : 9    → Output : Number is Odd
-//  Input : 0    → Output : Number is Even
-//  Input : -5   → Output : Number is Odd
+//  Input  : Sandali Sunil Bhadane
+//  Output : Your Name is : Sandali Sunil Bhadane
 //
 ///////////////////////////////////////////////////////////////////

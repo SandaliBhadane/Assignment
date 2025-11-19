@@ -1,36 +1,43 @@
+/*
+   Algorithm
+   START
+      Accept a number from user
+      If number > 100
+         Display "Greater"
+      Else
+         Display "Smaller"
+   STOP
+*/
+
 ///////////////////////////////////////////////////////////////////
 //
 //  Required Header Files
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
+#include<stdbool.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : FindMax
-//  Description   : Used to find the maximum of two given numbers
-//  Input         : Integer, Integer
-//  Output        : Integer (Maximum number)
+//  Function Name : ChkGreater
+//  Description   : Checks whether the given number is greater than 100
+//  Input         : Integer (iNo)
+//  Output        : Boolean (true / false)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 09/10/2025
+//  Date          : 24/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-int FindMax(int a, int b)
+bool ChkGreater(int iNo)
 {
-    int iResult = 0;                      // To store the result
-    
-    if(a > b)                             // Check if first number is greater
+    if(iNo > 100)
     {
-        iResult = a;
+        return true;     // Number is greater than 100
     }
-    else                                  // Otherwise, second number is greater
+    else
     {
-        iResult = b;
+        return false;    // Number is 100 or smaller
     }
-
-    return iResult;                       // Return the maximum value
 }
-// End of FindMax()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -39,26 +46,34 @@ int FindMax(int a, int b)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int num1 = 0, num2 = 0, result = 0;   // To accept and store inputs
+    int iValue = 0;     // Variable to store user input
+    bool bRet = false;  // To store function result
 
-    printf("Enter two Numbers: ");
-    scanf("%d %d", &num1, &num2);
+    printf("Please enter number:\t");
+    scanf("%d", &iValue);
 
-    result = FindMax(num1, num2);         // Function call
+    bRet = ChkGreater(iValue);
 
-    printf("Maximum is: %d\n", result);   // Display the result
+    if(bRet == true)
+    {
+        printf("Greater");
+    }
+    else
+    {
+        printf("Smaller");
+    }
 
     return 0;
 }
-// End of Main
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Test Cases successfully handled by the application
+//  Example Output
 //
-//  Input1 : 10   Input2 : 20   Output : 20
-//  Input1 : -5   Input2 : 3    Output : 3
-//  Input1 : 7    Input2 : 7    Output : 7
-//  Input1 : 25   Input2 : 10   Output : 25
+//  Input  : 150
+//  Output : Greater
+//
+//  Input  : 45
+//  Output : Smaller
 //
 ///////////////////////////////////////////////////////////////////

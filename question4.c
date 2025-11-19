@@ -1,50 +1,47 @@
 /*
    Algorithm
    START
-      Accept a number from user
-      If number is greater than 0
-         Display "Number is Positive"
-      Else if number is less than 0
-         Display "Number is Negative"
+      Accept three numbers from user
+      If any number is 0
+         Return 0
       Else
-         Display "Number is Zero"
+         Multiply all three numbers
+         Return the result
    STOP
 */
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Required Header Files
+//  Required Header File
 //
 ///////////////////////////////////////////////////////////////////
 #include<stdio.h>
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Function Name : CheckNumberType
-//  Description   : Used to check whether a given number is 
-//                  positive, negative, or zero
-//  Input         : Integer (num)
-//  Output        : Prints the type of number on screen
+//  Function Name : Multiply
+//  Description   : Performs multiplication of three numbers
+//  Input         : Integer (iNo1, iNo2, iNo3)
+//  Output        : Integer (Multiplication result)
 //  Author        : Sandali Sunil Bhadane
-//  Date          : 21/10/2025
+//  Date          : 25/10/2025
 //
 ///////////////////////////////////////////////////////////////////
-void CheckNumberType(int num)
+int Multiply(int iNo1, int iNo2, int iNo3)
 {
-    if(num > 0)                                 // Condition for positive number
+    int iResult = 0;
+
+    // If any input number is 0, result will be 0
+    if(iNo1 == 0 || iNo2 == 0 || iNo3 == 0)
     {
-        printf("Number is Positive.");
+        return 0;
     }
-    else if(num < 0)                            // Condition for negative number
-    {
-        printf("Number is Negative.");
-    }
-    else                                        // When number is exactly zero
-    {
-        printf("Number is Zero.");
-    }
+
+    // Multiplying all three numbers
+    iResult = iNo1 * iNo2 * iNo3;
+
+    return iResult;
 }
-// End of CheckNumberType()
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -53,23 +50,26 @@ void CheckNumberType(int num)
 ///////////////////////////////////////////////////////////////////
 int main()
 {
-    int number = 0;                             // To accept user input
+    int iValue1 = 0, iValue2 = 0, iValue3 = 0;  // Input variables
+    int iRet = 0;                               // To store result
 
-    printf("Enter Number: ");
-    scanf("%d", &number);
+    printf("Please enter three numbers: ");
+    scanf("%d%d%d", &iValue1, &iValue2, &iValue3);
 
-    CheckNumberType(number);                    // Function call
+    iRet = Multiply(iValue1, iValue2, iValue3);
+    printf("Multiplication is : %d", iRet);
 
     return 0;
 }
-// End of Main
 
 ///////////////////////////////////////////////////////////////////
 //
-//  Test Cases successfully handled by the application
+//  Example Output
 //
-//  Input :  25   → Output : Number is Positive.
-//  Input : -12   → Output : Number is Negative.
-//  Input :   0   → Output : Number is Zero.
+//  Input  : 2 3 4
+//  Output : Multiplication is : 24
+//
+//  Input  : 0 5 7
+//  Output : Multiplication is : 0
 //
 ///////////////////////////////////////////////////////////////////
